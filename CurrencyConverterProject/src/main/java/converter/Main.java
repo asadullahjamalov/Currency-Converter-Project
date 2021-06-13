@@ -71,6 +71,7 @@ public class Main {
             em.merge(currency);
             em.getTransaction().commit();
             em.close();
+            JPAUtil.shutdown();
 
             /**
              * Getting the inputs from client
@@ -95,6 +96,10 @@ public class Main {
 
     }
 
+    /**
+     * This method is for getting current date in "dd.MM.yyyy" format
+     * @return
+     */
     private static String currentDate() {
         LocalDate now = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
@@ -102,7 +107,10 @@ public class Main {
     }
 
 
-
+    /**
+     * This method is for getting currency to convert from
+     * @return
+     */
     public static Currency getCurrencyFrom() {
         Currency currencyFrom = new Currency();
         OUT:
@@ -128,6 +136,10 @@ public class Main {
         return currencyFrom;
     }
 
+    /**
+     * This method is for getting currency to convert to
+     * @return
+     */
     public static Currency getCurrencyTo() {
         Currency currencyTo = new Currency();
         OUT:
@@ -153,6 +165,10 @@ public class Main {
         return currencyTo;
     }
 
+    /**
+     * This method is for getting converting value as double
+     * @return
+     */
     public static double getValue() {
         System.out.println("Please, enter the value that you want to convert ");
         while (true) {
